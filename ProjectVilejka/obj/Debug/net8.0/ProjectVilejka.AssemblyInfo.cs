@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectVilejka")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b23a4b42a6733de6b4052c597cbc5850c94bc96a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e11c6b99b7385654c4bbd7145fd68d29df8c4e3f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectVilejka")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectVilejka")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

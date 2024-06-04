@@ -1,10 +1,11 @@
 ﻿
 //Starting values
 using System.Diagnostics;
+using System.Linq;
 
 string? characterName;
-string[] characterAtributes = ["Strenght", "Dexterty", "Constitution", "Intilligence", "Wisdom", "Charisma"];
-int [] characterAtributesValue = [0, 0, 0, 0, 0, 0];
+string[] characterAtributes = {"Strenght", "Dexterty", "Constitution", "Intilligence", "Wisdom", "Charisma"};
+int [] characterAtributesValue = {0, 0, 0, 0, 0, 0};
 int weaponFind = 0;
 
 //Dice roll
@@ -22,26 +23,30 @@ Roles name must be betven 3 and 16 characters,
 Console.WriteLine("Let create your character");
 
 Console.WriteLine("Write Your character Name:");
+
 bool valid = false;
 
 do{
-    
+   
+
     characterName = Console.ReadLine();
-    switch (characterName.Length)
+
+    if (characterName.Any(char.IsDigit))
     {
-        case <3:
-            Console.WriteLine($"You entered {characterName.Length} letters, your name must contain at least 3 leters.\nType again");
-            break;
-
-        case >16:
-            Console.WriteLine($"You entered {characterName.Length}letters, your name must contain no more than 16 letters\nType again");
-            break;
-
-        default:
-            Console.WriteLine($"The mighty {characterName} was born to this world");
-            valid = true;
-            break;
-
+        Console.WriteLine("Your name must not contain numbers.\nType again");
+    }
+    else if (characterName.Length < 3)
+    {
+        Console.WriteLine($"You entered {characterName.Length} letters, your name must contain at least 3 leters.\nType again");
+    }
+    else if (characterName.Length > 16)
+    {
+        Console.WriteLine($"You entered {characterName.Length}letters, your name must contain no more than 16 letters\nType again");
+    }
+    else
+    {
+        Console.WriteLine($"The mighty {characterName} was born to this world");
+        valid = true;
     }
 } while (!valid);
 
