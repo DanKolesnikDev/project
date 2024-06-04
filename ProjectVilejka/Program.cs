@@ -61,7 +61,7 @@ foreach (string attributeName in characterAtributes )
     
     for (i=0; i<4; i++)
     {
-        diceRoll[i] = dice.Next(1, 6);
+        diceRoll[i] = dice.Next(1, 7);
         attributeSumm += diceRoll[i];
     }
 
