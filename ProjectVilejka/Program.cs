@@ -144,7 +144,7 @@ Console.ReadLine();
 
 string[] itemsInsideBag = ["Broken Utenos Bottle", "Stick with nail", "Cherep", "Broken brick", "Piaggio carburetor on rope"];
 
-weaponFind = dice.Next(0, 4);
+weaponFind = dice.Next(0, 5);
 Console.WriteLine($"You reached this bag and find inside {itemsInsideBag[weaponFind]}\nYou will use it as weapon from now.");
 Console.ReadLine();
 
