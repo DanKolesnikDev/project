@@ -1,11 +1,10 @@
-﻿
-//Starting values
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-
+/*
+//Starting values
 string? characterName;
 string[] characterAtributes = {"Strenght", "Dexterty", "Constitution", "Intilligence", "Wisdom", "Charisma"};
-int [] characterAtributesValue = {0, 0, 0, 0, 0, 0};
+int [] characterAtributesValue = new int[6];
 int weaponFind = 0;
 
 //Dice roll
@@ -15,13 +14,11 @@ Random dice = new Random();
 Console.WriteLine("Welcome to Vilejka surrvival game!");
 Console.ReadLine();
 
-/*
-Character creation:
-Roles name must be betven 3 and 16 characters,
-*/
+
+//Character creation:
+//Roles name must be betven 3 and 16 characters, no numbers allowed
 
 Console.WriteLine("Let create your character");
-
 Console.WriteLine("Write Your character Name:");
 
 bool valid = false;
@@ -50,10 +47,10 @@ do{
     }
 } while (!valid);
 
-/*
-Character generates random atribute values from rool 4 six-sided dice,
-discarding the lowest result, and then summing the remaining tree dice.
-*/
+
+//Character generates random atribute values from rool 4 six-sided dice,
+//discarding the lowest result, and then summing the remaining tree dice.
+
 
 Console.WriteLine("Lets roll Your starting attributes");
 Console.ReadLine();
@@ -71,7 +68,7 @@ foreach (string attributeName in characterAtributes )
     }
 
     int minimumRoll = diceRoll.Min();
-    characterAtributesValue[j] = attributeSumm- minimumRoll;
+    characterAtributesValue[j] = attributeSumm - minimumRoll;
     j++;
    
     Console.WriteLine($"Your {attributeName} will be {attributeSumm} points.");
@@ -96,7 +93,7 @@ switch (characterAttributeMaxPosition)
 
     case 2:
         Console.WriteLine($"Your Maximum atribute is {characterAtributes[2]} {characterAttributeMaxValue} points.\nYou class are Big HP Tank {characterName}!");
-        break;
+        break; 
 
     case 3:
         Console.WriteLine($"Your Maximum atribute is {characterAtributes[3]} {characterAttributeMaxValue} points.\nYou class are Apprentice Wizzard {characterName}!");
@@ -185,5 +182,49 @@ else
 
     Console.ReadLine();
     
+*/
 
+// Test Random loot item system
+Random dice = new Random();
 
+// Decide how many drops you will have
+int randomDropCount = dice.Next(1,7);
+Console.WriteLine(randomDropCount);
+
+for (int x = 0; x < randomDropCount; x++)
+{
+    // Define the loot categories and drop wheight
+    (string item, int weight) [] lootItems =
+    {
+        ("Gold", 50),
+        ("Consumable", 20),
+        ("Common item", 40),
+        ("Magic item", 10),
+        ("Rare item", 4),
+        ("Unique item", 1)
+    };
+
+    int totalWeight = lootItems.Sum(item => item.weight);
+    int randomWeight = dice.Next(totalWeight);
+
+    string selectedItem = "";
+    int cumulativeWeight = 0;
+    
+    // Selecting category based on drop wheight
+    foreach (var lootItem in lootItems)
+    {
+        cumulativeWeight += lootItem.weight;
+        if (randomWeight < cumulativeWeight)
+        {
+            selectedItem = lootItem.item;
+            break;
+        }
+    }
+Console.WriteLine(selectedItem);
+}
+
+//Need to do:
+// 1. Add items to each category
+// 2. Add random quantity of gold dropped
+// 3. Add function to select random item from category to drop list
+// 4. Add simple inventory list and gold count in inventory
